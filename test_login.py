@@ -60,3 +60,27 @@ def test_add_to_cart():
         assert cart.is_visible()
         print("✅ Add to cart test passed!")
         browser.close()
+
+def test_logout():
+    with sync_playwright() as p:
+        # Open chromium browser
+        browser = p.chromium.launch(headless=False)
+        page = browser.new_page()
+        # Go to the website
+        page.goto("https://www.saucedemo.com")
+        # Fill the username
+        page.fill("#user-name", "standard_user")
+        # Fill the password
+        page.fill("#password", "secret_sauce")
+        # Click on login
+        page.click("#login-button")
+        # Confirm url is open
+        assert page.url == "https://www.saucedemo.com/inventory.html"
+        # Click hamburger menu
+        page.click("#react-burger-menu-btn")
+        # Click logout
+        page.click("[data-test='logout-sidebar-link']")
+        # Confirm we are back on login page
+        assert page.url == "https://www.saucedemo.com/"
+        print("✅ Logout test passed!")
+        browser.close()
