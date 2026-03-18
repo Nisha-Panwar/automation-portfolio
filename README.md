@@ -6,6 +6,7 @@ A login and cart automation project using Playwright and Python.
 - ✅ Valid login on saucedemo.com
 - ✅ Invalid login shows error message
 - ✅ Add to cart functionality
+- ✅ Logout functionality
 
 ## Tools Used
 - Python
